@@ -2,8 +2,8 @@
     "total_products_analyzed": 5,
     "average_price_per_category": {
         "Fried": 29000.0,
-        "Dried": 15500.0,
-        "Baked": 11000.0
+        "Baked": 11000.0,
+        "Dried": 15500.0
     },
     "top_5_highest_rated": [
         {
