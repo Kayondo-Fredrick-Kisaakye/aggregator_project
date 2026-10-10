@@ -1,0 +1,50 @@
+{
+    "total_products_analyzed": 5,
+    "average_price_per_category": {
+        "Baked": 11000.0,
+        "Dried": 15500.0,
+        "Fried": 29000.0
+    },
+    "top_5_highest_rated": [
+        {
+            "id": 6,
+            "name": "Tropik Fruit Pineapple",
+            "price": 15500,
+            "category": "Baked",
+            "avg_score": 5.0,
+            "review_count": 1047
+        },
+        {
+            "id": 4,
+            "name": "Zinga Plantain Chips",
+            "price": 33000,
+            "category": "Fried",
+            "avg_score": 4.7,
+            "review_count": 350
+        },
+        {
+            "id": 1,
+            "name": "Freddie's Loaf",
+            "price": 6500,
+            "category": "Baked",
+            "avg_score": 4.5,
+            "review_count": 120
+        },
+        {
+            "id": 3,
+            "name": "Zinga Daddies",
+            "price": 25000,
+            "category": "Fried",
+            "avg_score": 4.5,
+            "review_count": 850
+        },
+        {
+            "id": 5,
+            "name": "Tropik Fruit Mango",
+            "price": 15500,
+            "category": "Dried",
+            "avg_score": 4.1,
+            "review_count": 980
+        }
+    ]
+}
