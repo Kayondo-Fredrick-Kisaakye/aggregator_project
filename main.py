@@ -38,7 +38,7 @@ def run_thread_mode() -> list[Product]:
         return list(execute.map(_process_product_thread, raw_products))
 
 # MODE 2: Asynchronous (asyncio + aiohttp)
-async def fetch_and_scrape_async(session: aihttp.ClientSession, prod_data: dict) -> Product:
+async def fetch_and_scrape_async(session: aiohttp.ClientSession, prod_data: dict) -> Product:
     scrape_url = f"{SCRAPER_BASE_URL}/{prod_data['id']}"
     avg_score, review_count = 0.0,0
     try:
