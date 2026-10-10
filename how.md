@@ -270,3 +270,130 @@ That is why the project was fixed by checking:
 Once those are aligned, the project works smoothly.
 
 If you keep practicing this pattern, you will get much faster at spotting bugs in Python projects.
+
+---
+
+## 10. A junior-level walkthrough of the code
+
+Here is the same project explained in the simplest possible way.
+
+### `main.py`
+This is the boss file. It decides what happens first.
+
+It does these jobs:
+
+- reads command-line arguments like `--mode` and `--profile`
+- chooses whether to run the threaded version or async version
+- fetches products and reviews
+- analyzes the data
+- prints the final report
+
+The key idea is: `main.py` is the orchestrator. It coordinates everything.
+
+### `config.py`
+This file stores constants such as:
+
+```python
+API_BASE_URL = "http://localhost:8000/api/products"
+SCRAPER_BASE_URL = "http://localhost:8000/reviews"
+REQUEST_TIMEOUT = 5
+```
+
+This avoids repeating the same URLs everywhere in the project. If the server changes later, you only change one file.
+
+### `api_fetcher.py`
+This file talks to the mock API and fetches the list of products.
+
+It uses `requests.get(...)` to call the API and then returns a Python list of dictionaries.
+
+Each dictionary looks like:
+
+```python
+{"id": 1, "name": "Freddie's Loaf", "price": 6500, "category": "Baked"}
+```
+
+### `scraper.py`
+This file fetches the HTML page for each product and extracts the rating and review count.
+
+It uses BeautifulSoup to parse the HTML:
+
+```python
+soup = BeautifulSoup(response.text, "html.parser")
+```
+
+Then it looks for the specific tag by ID:
+
+```python
+soup.find("span", id="avg-score")
+```
+
+This is how it gets the review score from the page.
+
+### `mock_server.py`
+This is a fake backend created with Python's built-in HTTP server.
+
+It behaves like:
+
+- an API with product data
+- a website with review pages
+
+This lets us test the project without needing a real external service.
+
+### `data_models.py`
+This file defines the `Product` class.
+
+A class is like a blueprint for creating product objects. Each product has attributes such as:
+
+- `id`
+- `name`
+- `price`
+- `category`
+- `avg_score`
+- `review_count`
+
+The `__slots__` feature tells Python to reserve only certain attributes, which is a memory-saving trick for large datasets.
+
+### `analyzer.py`
+This is where the logic happens.
+
+It performs tasks like:
+
+- remove products with zero reviews
+- group products by category
+- calculate average price per category
+- sort products by rating
+
+This is what turns raw data into useful insights.
+
+### `reporter.py`
+This file formats the final result and prints it nicely.
+
+It also writes the output to `report.json`, which is a common pattern in Python projects.
+
+---
+
+## 11. Why debugging teaches you the most
+
+When you debug a project like this, you learn a lot of real Python habits:
+
+- check variable names exactly
+- check function names exactly
+- run the program and read the traceback closely
+- confirm the server is running before calling the API
+- verify IDs and selectors match the real page
+
+This is the heart of junior Python growth: learning how to read errors and fix them one by one.
+
+---
+
+## 12. The biggest lesson for you
+
+If you remember only three things, remember these:
+
+1. `main.py` orchestrates the whole program.
+2. Each file should do one job clearly.
+3. Python is strict, so names and structure matter.
+
+That is why this project was built the way it was, and that is why it is a good learning project for Python beginners.
+
+If you keep building small projects like this, you will start seeing the same patterns in real-world apps: fetch, process, analyze, and report.
